@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  broker1:
+    image: eclipse-mosquitto:1.5
+    ports:
+    - 1883:1883
+    volumes:
+    - /home/andrea/Desktop/SmartLightAndSecurityDT/mosquitto-data/broker1:/mosquitto/data
+
+  broker2:
+    image: eclipse-mosquitto:1.5
+    ports: 
+    - 1884:1883
+    volumes:
+    - /home/andrea/Desktop/SmartLightAndSecurityDT/mosquitto-data/broker2:/mosquitto/data
+
+volumes:
+  mosquitto-data:
+    driver: local
+
+
