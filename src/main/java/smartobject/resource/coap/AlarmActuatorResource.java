@@ -38,7 +38,6 @@ public class AlarmActuatorResource extends CoapResource {
         super(name);
         this.deviceId = deviceId;
 
-
         //Jackson Object Mapper + Ignore Null Fields in order to properly generate the SenML Payload
         this.objectMapper = new ObjectMapper();
         this.objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);

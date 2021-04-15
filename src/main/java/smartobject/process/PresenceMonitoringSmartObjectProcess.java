@@ -57,7 +57,7 @@ public class PresenceMonitoringSmartObjectProcess {
 
             // ------------------kitchen-----------------//
 
-            /*IMqttClient mqttClientKitchen = new MqttClient(String.format("tcp://%s:%d",
+            IMqttClient mqttClientKitchen = new MqttClient(String.format("tcp://%s:%d",
                     MQTT_BROKER_IP,
                     MQTT_BROKER_PORT),
                     "device002",
@@ -106,13 +106,10 @@ public class PresenceMonitoringSmartObjectProcess {
                 }
             });
 
-            */
-
-
             presenceMonitoringSmartObjectMain.start();
-            //presenceMonitoringSmartObjectKitchen.start();
-            //presenceMonitoringSmartObjectBedroom.start();
-            //presenceMonitoringSmartObjectBathroom.start();
+            presenceMonitoringSmartObjectKitchen.start();
+            presenceMonitoringSmartObjectBedroom.start();
+            presenceMonitoringSmartObjectBathroom.start();
 
         }catch (Exception e){
             e.printStackTrace();

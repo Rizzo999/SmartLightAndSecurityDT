@@ -58,7 +58,7 @@ public class PresenceMonitoringSmartObject {
      * @param resourceMap
      */
 
-    public void init(String presenceSmartObjId, String idPiano, String idStanza, String swVersion, IMqttClient mqttClient, Map<String, SmartObjectResource<?>> resourceMap){
+    public void init(String presenceSmartObjId, String idPiano, String idStanza, String swVersion, IMqttClient mqttClient, Map<String,SmartObjectResource<?>> resourceMap){
 
         this.presenceSmartObjId = presenceSmartObjId;
         this.idPiano = idPiano;

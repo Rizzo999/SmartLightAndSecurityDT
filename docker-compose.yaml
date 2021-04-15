@@ -6,14 +6,18 @@ services:
     ports:
     - 1883:1883
     volumes:
-    - /home/andrea/Desktop/SmartLightAndSecurityDT/mosquitto-data/broker1:/mosquitto/data
+    - /home/andrea/Desktop/SmartLightAndSecurityDT/mosquitto-data/broker1/data:/mosquitto/data
+    - /home/andrea/Desktop/SmartLightAndSecurityDT/mosquitto-data/broker1/log:/mosquitto/log
+    - /home/andrea/Desktop/SmartLightAndSecurityDT/mosquitto.conf:/mosquitto/config/mosquitto.conf
 
   broker2:
     image: eclipse-mosquitto:1.5
     ports: 
     - 1884:1883
     volumes:
-    - /home/andrea/Desktop/SmartLightAndSecurityDT/mosquitto-data/broker2:/mosquitto/data
+    - /home/andrea/Desktop/SmartLightAndSecurityDT/mosquitto-data/broker2/data:/mosquitto/data
+    - /home/andrea/Desktop/SmartLightAndSecurityDT/mosquitto-data/broker2/log:/mosquitto/log
+    - /home/andrea/Desktop/SmartLightAndSecurityDT/mosquitto.conf:/mosquitto/config/mosquitto.conf
 
 volumes:
   mosquitto-data:
