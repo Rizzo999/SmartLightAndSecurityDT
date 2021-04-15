@@ -16,7 +16,35 @@ public class CoapDtExample {
 
     private static final Logger logger = LoggerFactory.getLogger(WldtCoapProcess.class);
 
-    public static void main(String[] args)  {
+    private int port = 0;
+
+    public CoapDtExample(int port) {
+        this.port = port;
+    }
+
+    public void run(){
+        try{
+
+            logger.info("{} Initializing WLDT-Engine ... ", TAG);
+
+            //Manual creation of the WldtConfiguration
+            WldtConfiguration wldtConfiguration = new WldtConfiguration();
+            wldtConfiguration.setDeviceNameSpace("it.unimore.dipi.things");
+            wldtConfiguration.setWldtBaseIdentifier("wldt");
+            wldtConfiguration.setWldtStartupTimeSeconds(10);
+            wldtConfiguration.setApplicationMetricsEnabled(false);
+
+            WldtEngine wldtEngine = new WldtEngine(wldtConfiguration);
+            wldtEngine.addNewWorker(new Coap2CoapWorker(getCoapProtocolConfiguration(port)));
+            wldtEngine.startWorkers();
+
+        }catch (Exception | WldtConfigurationException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    /*public static void main(String[] args)  {
 
         try{
 
@@ -36,18 +64,19 @@ public class CoapDtExample {
         }catch (Exception | WldtConfigurationException e){
             e.printStackTrace();
         }
-    }
+    }*/
 
     /**
      * Example of the CoAP-to-CoAP Worker Configuration
      * @return
      */
-    private static Coap2CoapConfiguration getCoapProtocolConfiguration(){
+
+    private Coap2CoapConfiguration getCoapProtocolConfiguration(int port){
 
         Coap2CoapConfiguration coap2CoapConfiguration = new Coap2CoapConfiguration();
         coap2CoapConfiguration.setResourceDiscovery(true);
         coap2CoapConfiguration.setDeviceAddress("127.0.0.1");
-        coap2CoapConfiguration.setDevicePort(5683);
+        coap2CoapConfiguration.setDevicePort(port);
 
         return coap2CoapConfiguration;
     }
