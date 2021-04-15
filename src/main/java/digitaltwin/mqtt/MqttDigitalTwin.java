@@ -26,7 +26,7 @@ public class MqttDigitalTwin {
 
     private static final int DT_SOURCE_MQTT_PORT = 1883;
 
-    private static String deviceId = null;
+    private String deviceId = null;
 
     public MqttDigitalTwin(String deviceId){
         this.deviceId = deviceId;
@@ -82,7 +82,7 @@ public class MqttDigitalTwin {
 
             WldtEngine wldtEngine = new WldtEngine(wldtConfiguration);
 
-            Mqtt2MqttWorker mqtt2MqttWorker = new Mqtt2MqttWorker(wldtEngine.getWldtId(), getMqttExampleConfiguration());
+            Mqtt2MqttWorker mqtt2MqttWorker = new Mqtt2MqttWorker(wldtEngine.getWldtId(), getMqttExampleConfiguration(deviceId));
 
             //Setup Processing Pipeline
             /*mqtt2MqttWorker.addProcessingPipeline(Mqtt2MqttWorker.DEFAULT_RESOURCE_TELEMETRY_PROCESSING_PIPELINE,
@@ -100,7 +100,8 @@ public class MqttDigitalTwin {
      * Example configuration for the MQTT-to-MQTT WLDT Worker
      * @return
      */
-    private static Mqtt2MqttConfiguration getMqttExampleConfiguration(){
+
+    private Mqtt2MqttConfiguration getMqttExampleConfiguration(String deviceId){
 
         Mqtt2MqttConfiguration mqtt2MqttConfiguration = new Mqtt2MqttConfiguration();
 

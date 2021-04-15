@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class CoapDtExampleProcess {
+public class CoapDtExample {
 
     private static final String TAG = "[WLDT-Process]";
 
